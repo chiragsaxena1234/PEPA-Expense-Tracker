@@ -169,16 +169,20 @@ st.dataframe(
 # Display monthly chart
 st.write("### 📊 Monthly Spending Chart")
 
-fig, ax = plt.subplots()
-monthly_data.plot(kind="bar", ax=ax)
-ax.set_xlabel("Month")
-ax.set_ylabel("Expenses (₹)")
-ax.set_title("Monthly Expense Analysis")
-plt.xticks(rotation=45)
-plt.tight_layout()
+if monthly_data.empty:
+    st.info("No monthly expense data available yet. Add expenses to see this chart.")
 
-st.pyplot(fig)
-plt.close(fig)
+else:
+    fig, ax = plt.subplots()
+    monthly_data.plot(kind="bar", ax=ax)
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Expenses (₹)")
+    ax.set_title("Monthly Expense Analysis")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    st.pyplot(fig)
+    plt.close(fig)
 
 # Monthly Budget Alert
 st.subheader("💰 Monthly Budget Alert")
