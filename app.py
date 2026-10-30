@@ -39,10 +39,21 @@ st.markdown("""
 st.caption(f"📅 Today's Date: {date.today().strftime('%d %B %Y')}")
 
 # Load dataset
+import os
+
+os.makedirs(os.path.dirname(FILE) or ".", exist_ok=True)
+
+if not os.path.exists(FILE):
+    pd.DataFrame(columns=[
+        "Date", "Category", "Description",
+        "Amount", "Payment_Mode"
+    ]).to_csv(FILE, index=False)
+
 df = pd.read_csv(FILE)
 df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
 df["Amount"] = pd.to_numeric(df["Amount"], errors="coerce")
 df = df.dropna(subset=["Date", "Amount", "Category"])
+
 
 # Add Expense Form
 st.sidebar.header("➕ Add New Expense")
