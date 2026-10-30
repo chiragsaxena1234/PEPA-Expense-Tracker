@@ -1,0 +1,126 @@
+/* PEPA - Professional Dashboard Theme */
+
+:root {
+    --primary: #0f766e;
+    --primary-dark: #115e59;
+    --navy: #172554;
+    --background: #f1f5f9;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+}
+
+/* Main page */
+.stApp {
+    background: var(--background);
+    color: var(--text);
+}
+
+/* Main content spacing */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    max-width: 1400px;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: var(--navy);
+    border-right: 1px solid #263766;
+}
+
+section[data-testid="stSidebar"] * {
+    color: #f8fafc;
+}
+
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    color: #cbd5e1;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: var(--navy);
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+/* Metric cards */
+div[data-testid="stMetric"] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--muted);
+}
+
+/* Buttons */
+.stButton > button,
+.stDownloadButton > button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 0.55rem 1rem;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.stButton > button:hover,
+.stDownloadButton > button:hover {
+    background: var(--primary-dark);
+    color: white;
+    border: none;
+}
+
+/* Inputs */
+.stTextInput input,
+.stNumberInput input,
+.stDateInput input,
+.stSelectbox div[data-baseweb="select"] {
+    border-radius: 8px;
+}
+
+/* Charts and tables */
+div[data-testid="stPlotlyChart"],
+div[data-testid="stDataFrame"],
+div[data-testid="stTable"] {
+    background: var(--surface);
+    border-radius: 12px;
+}
+
+/* Expanders */
+div[data-testid="stExpander"] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+/* Alerts */
+div[data-testid="stAlert"] {
+    border-radius: 10px;
+}
+
+/* Mobile responsive layout */
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1rem 0.8rem 2rem;
+    }
+
+    h1 {
+        font-size: 1.7rem !important;
+    }
+
+    h2 {
+        font-size: 1.35rem !important;
+    }
+
+    div[data-testid="stMetric"] {
+        padding: 12px;
+    }
+}
+

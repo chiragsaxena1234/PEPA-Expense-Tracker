@@ -1,0 +1,6 @@
+data/expenses.csv
+data/savings_goal.json
+__pycache__/
+.venv/
+.venv/
+.env
