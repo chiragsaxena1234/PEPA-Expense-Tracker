@@ -107,30 +107,34 @@ col3.metric(
     f"₹{df['Amount'].mean():,.2f}" if len(df) else "₹0"
 )
 
-# Category Analysis
+
 st.subheader("📈 Category-wise Expenses")
 
 category_data = df.groupby("Category")["Amount"].sum()
 
-left, right = st.columns(2)
+if category_data.empty:
+    st.info("No expense data available yet. Add your first expense to see charts.")
 
-with left:
-    fig, ax = plt.subplots()
-    category_data.plot(kind="bar", ax=ax)
-    ax.set_ylabel("Amount (₹)")
-    ax.set_title("Spending by Category")
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    st.pyplot(fig)
-    plt.close(fig)
+else:
+    left, right = st.columns(2)
 
-with right:
-    fig, ax = plt.subplots()
-    category_data.plot(kind="pie", autopct="%1.1f%%", ax=ax)
-    ax.set_ylabel("")
-    ax.set_title("Expense Distribution")
-    st.pyplot(fig)
-    plt.close(fig)
+    with left:
+        fig, ax = plt.subplots()
+        category_data.plot(kind="bar", ax=ax)
+        ax.set_ylabel("Amount (₹)")
+        ax.set_title("Spending by Category")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        st.pyplot(fig)
+        plt.close(fig)
+
+    with right:
+        fig, ax = plt.subplots()
+        category_data.plot(kind="pie", autopct="%1.1f%%", ax=ax)
+        ax.set_ylabel("")
+        ax.set_title("Expense Distribution")
+        st.pyplot(fig)
+        plt.close(fig)
 
 # Expense Records
 st.subheader("📋 All Expense Records")
